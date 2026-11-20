@@ -3,7 +3,7 @@ title: "Tchaikovsky: Liturgy of St John Chrysostom"
 shortTitle: Tchaikovsky Liturgy
 month: April
 series: One Equal Music Foundation
-summary: One Equal Music Foundation
+summary: OEM Foundation, directed by Tomasz Holownia
 image: /images/tchaikovsky.jpg
 imageAlt: Theo Aitcheson, baritone
 imagePosition: 50% 35%

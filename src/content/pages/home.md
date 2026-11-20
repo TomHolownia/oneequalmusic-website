@@ -61,10 +61,10 @@ sections:
         heading: Join our mailing list
         text: Hear about new concerts first, with early booking links.
         buttonLabel: Sign up
-        buttonUrl: mailto:admin@oneequalmusic.org?subject=Mailing%20list
+        buttonUrl: https://oneequalmusic.us17.list-manage.com/subscribe?u=de5238c18896fccfe24f3915e&id=10911af62b
       - id: support
         heading: Support OEM
-        text: Donations help us keep paying every singer, every time.
+        text: Donations help us keep paying every singer, every time. Email us to find out how to give.
         buttonLabel: Become a donor
         buttonUrl: mailto:admin@oneequalmusic.org?subject=Supporting%20OEM
 ---
