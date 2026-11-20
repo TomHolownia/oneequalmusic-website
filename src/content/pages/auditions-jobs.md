@@ -2,7 +2,10 @@
 title: Auditions & jobs
 description: Audition for One Equal Music, OEM Emerging Artists or OEM Foundation. Every role is paid per call.
 sections:
-  - type: text
+  - type: imageText
+    image: /images/gallery-baroque.jpg
+    imageAlt: Five singers in concert dress, smiling, outside a sandstone church
+    imagePosition: 50% 55%
     eyebrow: Sing with us
     heading: Auditions
     body: |-

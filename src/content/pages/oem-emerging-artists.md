@@ -2,7 +2,10 @@
 title: OEM Emerging Artists
 description: The OEM Emerging Artist Program brings the strongest Foundation singers into the professional choir.
 sections:
-  - type: text
+  - type: imageText
+    image: /images/emerging-rehearsal.jpg
+    imageAlt: Singers rehearsing in a church, reading from tablets and folders
+    imagePosition: 50% 35%
     eyebrow: Understudies
     heading: OEM Emerging Artists
     body: |-

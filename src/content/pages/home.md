@@ -22,7 +22,7 @@ sections:
   - type: concerts
     id: concerts
     heading: 2027 Concerts
-    text: Tap any concert to book.
+    text: Book with the orange button on each concert.
   - type: seasonPass
     id: pass
     eyebrow: Give the season this Christmas · $290 until 31 December

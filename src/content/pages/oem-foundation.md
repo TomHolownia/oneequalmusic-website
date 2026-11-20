@@ -2,7 +2,10 @@
 title: OEM Foundation
 description: OEM Foundation gives young and emerging singers their first paid performance opportunities.
 sections:
-  - type: text
+  - type: imageText
+    image: /images/foundation-smiling.jpg
+    imageAlt: Four OEM Foundation singers smiling together outside at night
+    imagePosition: 50% 40%
     eyebrow: Foundation choir
     heading: OEM Foundation
     body: |-
