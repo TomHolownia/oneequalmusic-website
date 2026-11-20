@@ -40,8 +40,9 @@ sections:
       - Can’t make one? Send a friend in your place
   - type: about
     id: about
-    image: /images/about.jpg
-    imageAlt: One Equal Music singers Shannon Leonard, Eleanor Adeney, Tomasz Holownia and Louise Prickett
+    image: /images/group-smiling.jpg
+    imageAlt: One Equal Music singers in concert dress, smiling, in front of a brick building
+    imagePosition: 50% 62%
     eyebrow: About us
     heading: Professional choral music in Queensland
     text: True to our name, we pay every musician for every rehearsal and concert, chorus singers included.

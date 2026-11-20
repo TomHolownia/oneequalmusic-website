@@ -4,7 +4,7 @@ const { b } = Astro.props;
 ---
 <section id={b.id} class="light" aria-label={b.heading}>
   <div class="wrap row">
-    {b.image && <img src={href(b.image)} alt={b.imageAlt || ''} loading="lazy" />}
+    {b.image && <img src={href(b.image)} alt={b.imageAlt || ''} loading="lazy" style={b.imagePosition && `object-position:${b.imagePosition}`} />}
     <div class="copy">
       {b.eyebrow && <p class="eyebrow">{b.eyebrow}</p>}
       <h2>{b.heading}</h2>

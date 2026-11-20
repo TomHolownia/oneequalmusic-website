@@ -103,6 +103,7 @@ content:
               - { name: id, label: Anchor, type: string }
               - { name: image, label: Photo, type: image }
               - { name: imageAlt, label: Photo description, type: string }
+              - { name: imagePosition, label: Photo focus (e.g. "50% 60%" = centre, a bit below the middle), type: string }
               - { name: eyebrow, label: Small label, type: string }
               - { name: heading, label: Heading, type: string }
               - { name: text, label: Text, type: text }

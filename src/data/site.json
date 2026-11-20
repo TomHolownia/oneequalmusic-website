@@ -6,6 +6,7 @@
     { "label": "Concerts", "url": "/#concerts" },
     { "label": "Season Pass", "url": "/#pass" },
     { "label": "About", "url": "/#about" },
+    { "label": "Gallery", "url": "/gallery" },
     { "label": "Support", "url": "/#support" },
     { "label": "Join", "url": "/#join" }
   ],
