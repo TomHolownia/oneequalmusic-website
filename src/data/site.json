@@ -1,0 +1,18 @@
+{
+  "name": "One Equal Music",
+  "description": "Queensland’s professional choir. The 2027 season in Brisbane and Toowoomba.",
+  "email": "admin@oneequalmusic.org",
+  "nav": [
+    { "label": "Concerts", "url": "/#concerts" },
+    { "label": "Season Pass", "url": "/#pass" },
+    { "label": "About", "url": "/#about" },
+    { "label": "Support", "url": "/#support" },
+    { "label": "Join", "url": "/#join" }
+  ],
+  "social": [
+    { "label": "Instagram", "url": "https://www.instagram.com/one.equal.music" },
+    { "label": "Facebook", "url": "https://www.facebook.com/OneEqualMusicQLD" }
+  ],
+  "footerLinks": [],
+  "acknowledgement": "One Equal Music acknowledges the Traditional Owners of the land on which we sing, The Turrbal and Yuggera People."
+}

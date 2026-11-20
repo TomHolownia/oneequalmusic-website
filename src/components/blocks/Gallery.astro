@@ -1,0 +1,20 @@
+---
+import { href } from '../../lib/util';
+const { b } = Astro.props;
+---
+<section id={b.id} aria-label={b.heading || 'Gallery'}>
+  <div class="wrap inner">
+    {b.heading && <h2>{b.heading}</h2>}
+    <div class="grid">
+      {(b.images || []).map((i: any) => <figure><img src={href(i.image)} alt={i.alt || ''} loading="lazy" />{i.caption && <figcaption>{i.caption}</figcaption>}</figure>)}
+    </div>
+  </div>
+</section>
+<style>
+  .inner { padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 32px; }
+  h2 { font-weight: 300; font-size: 48px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  figure { margin: 0; }
+  img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+  figcaption { font-size: 13px; color: var(--muted); padding-top: 8px; }
+</style>

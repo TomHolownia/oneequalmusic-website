@@ -1,0 +1,23 @@
+---
+import ConcertCard from '../ConcertCard.astro';
+import { concerts } from '../../lib/util';
+const { b } = Astro.props;
+const list = await concerts();
+---
+<section id={b.id} aria-label={b.heading}>
+  <div class="wrap inner">
+    <div class="head">
+      {b.heading && <h2>{b.heading}</h2>}
+      {b.text && <p class="muted">{b.text}</p>}
+    </div>
+    <div class="grid">{list.map((c) => <ConcertCard c={c.data} />)}</div>
+  </div>
+</section>
+<style>
+  .inner { padding-top: 96px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 40px; }
+  .head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  h2 { font-weight: 300; font-size: 56px; line-height: 1; }
+  .muted { font-size: 15px; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+  @media (max-width: 600px) { .inner { padding-top: 64px; } h2 { font-size: 44px; } }
+</style>

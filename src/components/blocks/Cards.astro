@@ -1,0 +1,23 @@
+---
+import Button from '../Button.astro';
+const { b } = Astro.props;
+---
+<section id={b.id} aria-label={b.heading || 'More'}>
+  <div class="wrap grid">
+    {(b.cards || []).map((c: any) => (
+      <div class="card" id={c.id}>
+        <h2>{c.heading}</h2>
+        {c.text && <p>{c.text}</p>}
+        <div><Button style="outline" label={c.buttonLabel} url={c.buttonUrl} /></div>
+      </div>
+    ))}
+  </div>
+</section>
+<style>
+  .grid { padding-top: 88px; padding-bottom: 88px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px; }
+  .card { border: 1px solid var(--line); padding: 40px; display: flex; flex-direction: column; gap: 16px; }
+  h2 { font-weight: 400; font-size: 36px; line-height: 1.1; }
+  p { font-size: 16px; line-height: 1.6; color: var(--text-soft); }
+  .card > div { margin-top: 8px; }
+  @media (max-width: 600px) { .card { padding: 28px 22px; } .grid { padding-top: 56px; padding-bottom: 56px; } }
+</style>

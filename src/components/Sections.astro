@@ -1,0 +1,22 @@
+---
+import Hero from './blocks/Hero.astro';
+import NextConcert from './blocks/NextConcert.astro';
+import Concerts from './blocks/Concerts.astro';
+import SeasonPass from './blocks/SeasonPass.astro';
+import About from './blocks/About.astro';
+import Cards from './blocks/Cards.astro';
+import Text from './blocks/Text.astro';
+import ImageText from './blocks/ImageText.astro';
+import Gallery from './blocks/Gallery.astro';
+
+// Block type (as saved by Pages CMS) -> component. Add a new block here and in .pages.yml.
+const BLOCKS: Record<string, any> = {
+  hero: Hero, nextConcert: NextConcert, concerts: Concerts, seasonPass: SeasonPass,
+  about: About, cards: Cards, text: Text, imageText: ImageText, gallery: Gallery,
+};
+const { sections = [] } = Astro.props;
+---
+{sections.filter((s: any) => !s.hidden).map((s: any) => {
+  const C = BLOCKS[s.type];
+  return C ? <C b={s} /> : null;
+})}

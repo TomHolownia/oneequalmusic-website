@@ -1,0 +1,202 @@
+# Pages CMS (https://app.pagescms.org) — the editing screens for the One Equal Music website.
+# Sign in with GitHub, open this repo, and edit Concerts, Pages and Site settings.
+# Every save is a commit to `main`, which redeploys the site in about a minute.
+
+media:
+  input: public/images
+  output: /images
+  extensions: [jpg, jpeg, png, webp, svg, gif]
+
+content:
+  - name: concerts
+    label: Concerts
+    type: collection
+    path: src/content/concerts
+    format: yaml-frontmatter
+    filename: "{fields.title}.md"
+    view:
+      fields: [title, month]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: shortTitle, label: Short title (used in the Season Pass list), type: string }
+      - { name: month, label: Label above the title (e.g. "May · Special event"), type: string, required: true }
+      - { name: summary, label: One-line summary, type: string }
+      - { name: image, label: Photo, type: image, required: true }
+      - { name: imageAlt, label: Photo description (for screen readers), type: string }
+      - { name: imagePosition, label: Photo focus (e.g. "50% 35%" = centre, a third down), type: string, default: "50% 35%" }
+      - { name: inSeasonPass, label: Included in the Season Pass, type: boolean }
+      - { name: hidden, label: Hide this concert, type: boolean }
+      - { name: note, label: Small note under the dates, type: string }
+      - name: performances
+        label: Performances
+        type: object
+        list: true
+        fields:
+          - { name: date, label: Date, type: date, required: true }
+          - { name: city, label: Place, type: string, required: true }
+          - { name: time, label: Time (e.g. 7:30pm), type: string }
+          - { name: bookingUrl, label: Booking link, type: string }
+          - { name: bookingLabel, label: Button text (e.g. Book Brisbane), type: string }
+
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/content/pages
+    format: yaml-frontmatter
+    filename: "{fields.title}.md"
+    view:
+      fields: [title]
+    fields:
+      - { name: title, label: Page title, type: string, required: true }
+      - { name: description, label: Description (for Google and link previews), type: text }
+      - name: sections
+        label: Sections
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+          - name: hero
+            label: Hero (big heading and photo)
+            fields:
+              - { name: eyebrow, label: Small label, type: string }
+              - { name: heading, label: Heading (new line = line break), type: text }
+              - { name: text, label: Text, type: text }
+              - { name: image, label: Photo, type: image }
+              - { name: imageAlt, label: Photo description, type: string }
+              - name: buttons
+                label: Buttons
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Text, type: string }
+                  - { name: url, label: Link, type: string }
+                  - { name: style, label: Style, type: select, options: { values: [primary, outline] } }
+              - { name: hidden, label: Hide this section, type: boolean }
+          - name: nextConcert
+            label: Next concert banner (automatic)
+            fields:
+              - { name: eyebrow, label: Small label, type: string }
+              - { name: hidden, label: Hide this section, type: boolean }
+          - name: concerts
+            label: Concert grid (automatic, from Concerts)
+            fields:
+              - { name: id, label: Anchor (for menu links, e.g. concerts), type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: text, label: Text, type: string }
+              - { name: hidden, label: Hide this section, type: boolean }
+          - name: seasonPass
+            label: Season Pass
+            fields:
+              - { name: id, label: Anchor, type: string }
+              - { name: eyebrow, label: Small label, type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: text, label: Text, type: text }
+              - { name: price, label: Price, type: string }
+              - { name: priceNote, label: Price note, type: string }
+              - { name: buttonLabel, label: Button text, type: string }
+              - { name: buttonUrl, label: Button link, type: string }
+              - { name: perks, label: Perks, type: string, list: true }
+              - { name: hidden, label: Hide this section, type: boolean }
+          - name: about
+            label: About (photo, text and links)
+            fields:
+              - { name: id, label: Anchor, type: string }
+              - { name: image, label: Photo, type: image }
+              - { name: imageAlt, label: Photo description, type: string }
+              - { name: eyebrow, label: Small label, type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: text, label: Text, type: text }
+              - { name: linkLabel, label: Link text, type: string }
+              - { name: linkUrl, label: Link, type: string }
+              - name: links
+                label: Link list
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: Title, type: string }
+                  - { name: subtitle, label: Subtitle, type: string }
+                  - { name: url, label: Link, type: string }
+              - { name: hidden, label: Hide this section, type: boolean }
+          - name: cards
+            label: Cards (boxes with a button)
+            fields:
+              - name: cards
+                label: Cards
+                type: object
+                list: true
+                fields:
+                  - { name: id, label: Anchor, type: string }
+                  - { name: heading, label: Heading, type: string }
+                  - { name: text, label: Text, type: text }
+                  - { name: buttonLabel, label: Button text, type: string }
+                  - { name: buttonUrl, label: Button link, type: string }
+              - { name: hidden, label: Hide this section, type: boolean }
+          - name: text
+            label: Text
+            fields:
+              - { name: id, label: Anchor, type: string }
+              - { name: theme, label: Background, type: select, options: { values: [dark, light] } }
+              - { name: eyebrow, label: Small label, type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: body, label: Text, type: rich-text }
+              - { name: hidden, label: Hide this section, type: boolean }
+          - name: imageText
+            label: Photo and text
+            fields:
+              - { name: id, label: Anchor, type: string }
+              - { name: theme, label: Background, type: select, options: { values: [dark, light] } }
+              - { name: image, label: Photo, type: image }
+              - { name: imageAlt, label: Photo description, type: string }
+              - { name: imageRight, label: Photo on the right, type: boolean }
+              - { name: eyebrow, label: Small label, type: string }
+              - { name: heading, label: Heading, type: string }
+              - { name: body, label: Text, type: rich-text }
+              - { name: buttonLabel, label: Button text, type: string }
+              - { name: buttonUrl, label: Button link, type: string }
+              - { name: hidden, label: Hide this section, type: boolean }
+          - name: gallery
+            label: Photo gallery
+            fields:
+              - { name: id, label: Anchor, type: string }
+              - { name: heading, label: Heading, type: string }
+              - name: images
+                label: Photos
+                type: object
+                list: true
+                fields:
+                  - { name: image, label: Photo, type: image }
+                  - { name: alt, label: Description, type: string }
+                  - { name: caption, label: Caption, type: string }
+              - { name: hidden, label: Hide this section, type: boolean }
+
+  - name: site
+    label: Site settings
+    type: file
+    path: src/data/site.json
+    format: json
+    fields:
+      - { name: name, label: Site name, type: string }
+      - { name: description, label: Default description, type: text }
+      - { name: email, label: Contact email, type: string }
+      - name: nav
+        label: Top menu
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Text, type: string }
+          - { name: url, label: Link (e.g. /#concerts or /oem-foundation), type: string }
+      - name: social
+        label: Social links
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Name, type: string }
+          - { name: url, label: Link, type: string }
+      - name: footerLinks
+        label: Footer links
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Text, type: string }
+          - { name: url, label: Link, type: string }
+      - { name: acknowledgement, label: Acknowledgement of Country, type: text }

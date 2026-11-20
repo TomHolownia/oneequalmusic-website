@@ -1,0 +1,9 @@
+---
+import { href, isExternal } from '../lib/util';
+interface Props { label?: string; url?: string; style?: string; small?: boolean }
+const { label, url, style = 'primary', small } = Astro.props;
+---
+{label && url && (
+  <a class:list={['btn', `btn-${style}`, { 'btn-sm': small }]} href={href(url)}
+     target={isExternal(url) ? '_blank' : undefined} rel={isExternal(url) ? 'noopener' : undefined}>{label}</a>
+)}

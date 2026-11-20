@@ -1,0 +1,64 @@
+---
+import site from '../data/site.json';
+import { href, isExternal } from '../lib/util';
+import '../styles/global.css';
+interface Props { title: string; description?: string; home?: boolean }
+const { title, description, home } = Astro.props;
+const pageTitle = home ? `${site.name} – ${title}` : `${title} – ${site.name}`;
+---
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description || site.description} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description || site.description} />
+  <meta property="og:image" content={new URL(href('/images/hero.jpg'), Astro.site).toString()} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href={href('/')}>ONE EQUAL MUSIC</a>
+      <nav aria-label="Main">
+        {site.nav.map((n) => <a href={href(n.url)}>{n.label}</a>)}
+      </nav>
+    </div>
+  </header>
+  <main><slot /></main>
+  <footer class="site-footer">
+    <div class="wrap cols">
+      <div class="col">
+        <p class="brand small">ONE EQUAL MUSIC</p>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <p>{site.social.map((s, i) => <>{i > 0 && '  ·  '}<a href={s.url} target="_blank" rel="noopener">{s.label}</a></>)}</p>
+      </div>
+      {site.footerLinks.length > 0 && (
+        <nav aria-label="More" class="col">
+          {site.footerLinks.map((l: { label: string; url: string }) => <a class="muted" href={href(l.url)} target={isExternal(l.url) ? '_blank' : undefined}>{l.label}</a>)}
+        </nav>
+      )}
+      <p class="ack">{site.acknowledgement}</p>
+    </div>
+  </footer>
+</body>
+</html>
+<style>
+  .site-header { border-bottom: 1px solid var(--line-soft); }
+  .bar { padding-top: 22px; padding-bottom: 22px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; }
+  .brand { text-decoration: none; color: var(--cream); font-family: var(--serif); font-size: 26px; font-weight: 500; letter-spacing: 0.18em; margin: 0; }
+  .brand.small { font-size: 22px; letter-spacing: 0.16em; }
+  nav[aria-label='Main'] { display: flex; flex-wrap: wrap; gap: 0 28px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+  nav[aria-label='Main'] a { color: var(--cream); text-decoration: none; padding: 12px 0; }
+  nav[aria-label='Main'] a:hover { color: var(--accent-text); }
+  @media (max-width: 600px) { nav[aria-label='Main'] { gap: 0 18px; font-size: 12px; } .brand { font-size: 22px; } }
+  .site-footer { border-top: 1px solid var(--line-soft); }
+  .cols { padding-top: 48px; padding-bottom: 56px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 48px; font-size: 14px; line-height: 1.7; color: var(--muted); }
+  .col { flex: 1 1 260px; display: flex; flex-direction: column; gap: 6px; }
+  .muted { color: var(--muted); }
+  .ack { flex: 2 1 320px; }
+</style>

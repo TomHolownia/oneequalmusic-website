@@ -1,0 +1,31 @@
+---
+import Button from './Button.astro';
+import { href, shortDate } from '../lib/util';
+const { c } = Astro.props;
+---
+<article class="card">
+  <img src={href(c.image)} alt={c.imageAlt} loading="lazy" style={`object-position:${c.imagePosition}`} />
+  <div class="body">
+    <p class="eyebrow">{c.month}</p>
+    <h3>{c.title}</h3>
+    {c.summary && <p class="summary">{c.summary}</p>}
+    <p class="dates">
+      {c.performances.map((p: any, i: number) => <>{i > 0 && <br />}{shortDate(p.date)} · {p.city}{p.time && `, ${p.time}`}</>)}
+    </p>
+    {c.note && <p class="note">{c.note}</p>}
+    <div class="btns">
+      {c.performances.filter((p: any) => p.bookingUrl).map((p: any) => <Button small label={p.bookingLabel || 'Book tickets'} url={p.bookingUrl} />)}
+    </div>
+  </div>
+</article>
+<style>
+  .card { background: var(--panel); display: flex; flex-direction: column; }
+  .card:hover { outline: 1px solid #4a3d33; }
+  img { width: 100%; height: 200px; object-fit: cover; }
+  .body { padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+  h3 { font-size: 27px; font-weight: 500; line-height: 1.1; }
+  .summary, .note { font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .note { font-size: 13px; }
+  .dates { font-size: 14px; line-height: 1.6; }
+  .btns { margin-top: auto; padding-top: 6px; gap: 10px; }
+</style>

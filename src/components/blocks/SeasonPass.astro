@@ -1,0 +1,58 @@
+---
+import Button from '../Button.astro';
+import { concerts, shortDate } from '../../lib/util';
+const { b } = Astro.props;
+const included = (await concerts()).filter((c) => c.data.inSeasonPass).map((c) => {
+  const p = c.data.performances.find((x) => x.city !== 'Toowoomba') || c.data.performances[0];
+  return { name: c.data.shortTitle || c.data.title, date: shortDate(p.date) };
+});
+---
+<section id={b.id} aria-label={b.heading}>
+  <div class="wrap outer">
+    <div class="box">
+      <div class="top">
+        <div class="left">
+          {b.eyebrow && <p class="eyebrow">{b.eyebrow}</p>}
+          <h2>{b.heading}</h2>
+          {b.text && <p class="prose">{b.text}</p>}
+        </div>
+        <div class="right">
+          {b.price && <p class="price">{b.price}</p>}
+          {b.priceNote && <p class="note">{b.priceNote}</p>}
+          <Button label={b.buttonLabel} url={b.buttonUrl} />
+        </div>
+      </div>
+      <div class="lists">
+        <div class="col">
+          <h3 class="eyebrow">Included</h3>
+          <ul class="inc">{included.map((i) => <li><span>{i.name}</span><span class="muted">{i.date}</span></li>)}</ul>
+        </div>
+        {b.perks?.length > 0 && (
+          <div class="col">
+            <h3 class="eyebrow">Perks</h3>
+            <ul class="perks">{b.perks.map((p: string) => <li>{p}</li>)}</ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .outer { padding-bottom: 96px; }
+  .box { background: var(--panel); border-top: 3px solid var(--accent); padding: 56px 48px; display: flex; flex-direction: column; gap: 40px; }
+  .top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px; }
+  .left { flex: 2 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+  h2 { font-weight: 300; font-size: 52px; line-height: 1; }
+  .right { flex: 1 1 240px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .price { font-family: var(--serif); font-size: 56px; font-weight: 500; line-height: 1; }
+  .note, .muted { font-size: 14px; color: var(--muted); }
+  .right :global(.btn) { margin-top: 6px; }
+  .lists { display: flex; flex-wrap: wrap; gap: 32px 64px; }
+  .col { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+  h3.eyebrow { font-family: var(--sans); }
+  ul { margin: 0; padding: 0; list-style: none; }
+  .inc li { font-size: 15px; line-height: 1.5; padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .perks li { font-size: 15px; line-height: 1.5; padding: 6px 0 6px 20px; position: relative; }
+  .perks li::before { content: '—'; position: absolute; left: 0; color: var(--accent-text); }
+  @media (max-width: 600px) { .box { padding: 36px 20px; } h2 { font-size: 42px; } .left, .col { flex-basis: 100%; } }
+</style>

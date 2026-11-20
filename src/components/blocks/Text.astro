@@ -1,0 +1,15 @@
+---
+const { b } = Astro.props;
+---
+<section id={b.id} class:list={{ light: b.theme === 'light' }} aria-label={b.heading}>
+  <div class="wrap inner">
+    {b.eyebrow && <p class="eyebrow">{b.eyebrow}</p>}
+    {b.heading && <h2>{b.heading}</h2>}
+    {b.body && <div class="prose" set:html={b.body} />}
+  </div>
+</section>
+<style>
+  .inner { padding-top: 88px; padding-bottom: 56px; display: flex; flex-direction: column; gap: 20px; max-width: 820px; margin-left: 0; }
+  @media (min-width: 1200px) { .inner { margin-left: calc((100vw - 1200px) / 2); } }
+  h2 { font-weight: 300; font-size: clamp(42px, 6vw, 64px); line-height: 1; }
+</style>

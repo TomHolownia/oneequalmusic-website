@@ -1,0 +1,27 @@
+---
+import Button from '../Button.astro';
+import { concerts, shortDate } from '../../lib/util';
+const { b } = Astro.props;
+const today = new Date(new Date().toISOString().slice(0, 10));
+const next = (await concerts()).find((c) => c.data.performances.some((p) => p.date >= today))?.data;
+---
+{next && (
+  <section class="light" aria-label={b.eyebrow || 'Next concert'} id={b.id}>
+    <div class="wrap row">
+      <p class="eyebrow">{b.eyebrow || 'Next concert'}</p>
+      <div class="what">
+        <p class="title">{next.title}</p>
+        <p class="when">{next.performances.map((p) => `${shortDate(p.date)}, ${p.city}`).join('  ·  ')}</p>
+      </div>
+      <div class="btns">
+        {next.performances.filter((p) => p.bookingUrl).map((p) => <Button style="dark" label={p.bookingLabel || 'Book tickets'} url={p.bookingUrl} />)}
+      </div>
+    </div>
+  </section>
+)}
+<style>
+  .row { padding-top: 28px; padding-bottom: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 40px; }
+  .what { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+  .title { font-family: var(--serif); font-size: 30px; font-weight: 500; line-height: 1.1; }
+  .when { font-size: 15px; color: #4a4038; white-space: pre-wrap; }
+</style>
