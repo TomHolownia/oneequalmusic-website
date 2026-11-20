@@ -24,6 +24,10 @@ sections:
         text: See the full season and book.
         buttonLabel: See all concerts
         buttonUrl: /#concerts
+      - heading: Sing with us
+        text: Find out how to audition for One Equal Music.
+        buttonLabel: Auditions
+        buttonUrl: /auditions-jobs
       - heading: Support OEM
         text: To donate or find out more, email admin@oneequalmusic.org.
         buttonLabel: Get in touch

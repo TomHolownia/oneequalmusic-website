@@ -14,4 +14,8 @@ sections:
         text: OEM Foundation sings the Tchaikovsky Liturgy in April, Let Me Sing the World in September, and the Mozart Requiem with One Equal Music in November.
         buttonLabel: See all concerts
         buttonUrl: /#concerts
+      - heading: Sing with us
+        text: Find out how to audition for OEM Foundation.
+        buttonLabel: Auditions
+        buttonUrl: /auditions-jobs
 ---

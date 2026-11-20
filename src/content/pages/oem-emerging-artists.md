@@ -14,4 +14,8 @@ sections:
         text: See the full season and book.
         buttonLabel: See all concerts
         buttonUrl: /#concerts
+      - heading: Sing with us
+        text: Find out how to audition for the Emerging Artist Program.
+        buttonLabel: Auditions
+        buttonUrl: /auditions-jobs
 ---
