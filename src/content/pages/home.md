@@ -8,8 +8,8 @@ sections:
       The 2027
       Season
     text: Eight programs in Brisbane and Toowoomba, from Hildegard von Bingen to Mozart’s Requiem, sung by Queensland’s professional choir.
-    image: /images/hero.jpg
-    imageAlt: Portrait from the 2027 season photoshoot, lit in teal and orange
+    image: /images/hero-smiling.jpg
+    imageAlt: Artistic Directors Tomasz Holownia and Eleanor Adeney, smiling, lit in teal and orange
     buttons:
       - label: Book a Season Pass
         url: https://www.trybooking.com/au/event/1683498
@@ -40,9 +40,9 @@ sections:
       - Can’t make one? Send a friend in your place
   - type: about
     id: about
-    image: /images/group-smiling.jpg
-    imageAlt: One Equal Music singers in concert dress, smiling, in front of a brick building
-    imagePosition: 50% 62%
+    image: /images/about-group.jpg
+    imageAlt: Seven One Equal Music singers in concert dress, smiling, outside a sandstone church
+    imagePosition: 50% 60%
     eyebrow: About us
     heading: Professional choral music in Queensland
     text: True to our name, we pay every musician for every rehearsal and concert, chorus singers included.
