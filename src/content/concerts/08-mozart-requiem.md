@@ -2,7 +2,7 @@
 title: Mozart Requiem
 month: November
 series: One Equal Music
-summary: Both choirs, with chamber orchestra
+summary: OEM and OEM Foundation, with concertmaster Glenn Christensen
 image: /images/mozart.jpg
 imageAlt: Tomasz Holownia, conductor
 imagePosition: 50% 35%

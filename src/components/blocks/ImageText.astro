@@ -5,12 +5,12 @@ const { b } = Astro.props;
 ---
 <section id={b.id} class:list={{ light: b.theme === 'light' }} aria-label={b.heading}>
   <div class:list={['wrap', 'row', { rev: b.imageRight }]}>
-    {b.image && <img src={href(b.image)} alt={b.imageAlt || ''} loading="lazy" />}
+    {b.image && <img src={href(b.image)} alt={b.imageAlt || ''} loading="lazy" style={b.imagePosition && `object-position:${b.imagePosition}`} />}
     <div class="copy">
       {b.eyebrow && <p class="eyebrow">{b.eyebrow}</p>}
       {b.heading && <h2>{b.heading}</h2>}
       {b.body && <div class="prose" set:html={b.body} />}
-      <div><Button label={b.buttonLabel} url={b.buttonUrl} /></div>
+      {b.buttonLabel && b.buttonUrl && <div><Button label={b.buttonLabel} url={b.buttonUrl} /></div>}
     </div>
   </div>
 </section>

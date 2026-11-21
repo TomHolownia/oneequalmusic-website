@@ -2,7 +2,7 @@
 title: "Brahms: A German Requiem"
 month: August
 series: One Equal Music
-summary: The London version, with two pianists
+summary: The London version, for choir and piano four hands
 image: /images/brahms.jpg
 imageAlt: Eleanor Adeney, alto
 imagePosition: 50% 35%
