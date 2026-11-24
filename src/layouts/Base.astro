@@ -11,7 +11,9 @@ const pageTitle = home ? `${site.name} – ${title}` : `${title} – ${site.name
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
+  <link rel="icon" href={href('/favicon.ico')} sizes="48x48" />
+  <link rel="icon" type="image/png" href={href('/favicon-32.png')} sizes="32x32" />
+  <link rel="apple-touch-icon" href={href('/apple-touch-icon.png')} />
   <title>{pageTitle}</title>
   <meta name="description" content={description || site.description} />
   <meta property="og:title" content={pageTitle} />
@@ -24,7 +26,7 @@ const pageTitle = home ? `${site.name} – ${title}` : `${title} – ${site.name
 <body>
   <header class="site-header">
     <div class="wrap bar">
-      <a class="brand" href={href('/')}>ONE EQUAL MUSIC</a>
+      <a class="brand" href={href('/')}><img class="logo" src={href('/logo.png')} alt="One Equal Music" width="580" height="220" /></a>
       <nav aria-label="Main">
         {site.nav.map((n) => <a href={href(n.url)}>{n.label}</a>)}
       </nav>
@@ -34,7 +36,7 @@ const pageTitle = home ? `${site.name} – ${title}` : `${title} – ${site.name
   <footer class="site-footer">
     <div class="wrap cols">
       <div class="col">
-        <p class="brand small">ONE EQUAL MUSIC</p>
+        <img class="logo small" src={href('/logo.png')} alt="One Equal Music" width="580" height="220" loading="lazy" />
         <a href={`mailto:${site.email}`}>{site.email}</a>
         <p>{site.social.map((s, i) => <>{i > 0 && '  ·  '}<a href={s.url} target="_blank" rel="noopener">{s.label}</a></>)}</p>
       </div>
@@ -51,12 +53,13 @@ const pageTitle = home ? `${site.name} – ${title}` : `${title} – ${site.name
 <style>
   .site-header { border-bottom: 1px solid var(--line-soft); }
   .bar { padding-top: 22px; padding-bottom: 22px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; }
-  .brand { text-decoration: none; color: var(--cream); font-family: var(--serif); font-size: 26px; font-weight: 500; letter-spacing: 0.18em; margin: 0; }
-  .brand.small { font-size: 22px; letter-spacing: 0.16em; }
+  .brand { display: block; line-height: 0; }
+  .logo { display: block; height: 64px; width: auto; }
+  .logo.small { height: 56px; margin-bottom: 8px; align-self: flex-start; }
   nav[aria-label='Main'] { display: flex; flex-wrap: wrap; gap: 0 28px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
   nav[aria-label='Main'] a { color: var(--cream); text-decoration: none; padding: 12px 0; }
   nav[aria-label='Main'] a:hover { color: var(--accent-text); }
-  @media (max-width: 600px) { nav[aria-label='Main'] { gap: 0 18px; font-size: 12px; } .brand { font-size: 22px; } }
+  @media (max-width: 600px) { nav[aria-label='Main'] { gap: 0 18px; font-size: 12px; } .logo { height: 52px; } }
   .site-footer { border-top: 1px solid var(--line-soft); }
   .cols { padding-top: 48px; padding-bottom: 56px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 48px; font-size: 14px; line-height: 1.7; color: var(--muted); }
   .col { flex: 1 1 260px; display: flex; flex-direction: column; gap: 6px; }
